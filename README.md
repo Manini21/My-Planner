@@ -1,16 +1,36 @@
-# React + Vite
+# 🪶 My Planner App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **My Planner App** — a personal daily planner built with ❤️ using **React**!  
+Plan your day with a calendar, to-do list, sticky notes, and adorable stickers — all in one place.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## React Compiler
+✅ **Landing Page with Sign-Up** — simple entry screen before accessing your planner.  
+✅ **Interactive Calendar** — pick any date to view or add notes & tasks.  
+✅ **Sticky Notes** — jot down thoughts for each day.  
+✅ **To-Do List** — manage daily tasks effortlessly.  
+✅ **Sticker Pack** — drag & drop cute stickers onto your notes!  
+✅ **Mascot Buddy** — adds a touch of charm to your workspace.  
+✅ **Data Persistence** — all data (notes, todos, stickers) are saved in your browser’s local storage.  
+✅ **Responsive Design** — fully functional on both desktop 💻 and mobile 📱.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🖥️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React.js  
+- **Styling:** CSS3  
+- **Routing:** React Router DOM  
+- **Data Storage:** Local Storage  
+- **Deployment:** Vercel  
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/YourUsername/My-Planner.git
+cd My-Planner
