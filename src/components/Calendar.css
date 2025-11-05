@@ -1,0 +1,130 @@
+.calendar-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  /*height: 100%;*/
+}
+
+.react-calendar {
+  width: 300px !important; /* fix width so month names don't shift layout */
+  max-width: 300px;
+  min-width: 300px;
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+.react-calendar__tile {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+   text-overflow: ellipsis; /* trims if month name is long */
+}
+
+.react-calendar__viewContainer {
+  height: 240px; /* fixes overall height of dates grid */
+}
+
+
+.react-calendar__tile--active {
+  background: #ffb6c1 !important; /* light pink highlight */
+  color: black !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: white;
+}
+
+* --- Navigation bar (Month, Year, etc.) --- */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px; /* adds breathing space */
+  gap: 5px; /* gives space between buttons */
+}
+
+.react-calendar__navigation button {
+  min-width: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.react-calendar__navigation button:hover {
+  background: rgba(22, 21, 21, 0.3);
+}
+
+/* --- Scroll for month/year picker popup --- */
+.react-calendar__viewContainer {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.5) transparent;
+
+}
+
+/* WebKit (Chrome/Edge) scrollbar style */
+.react-calendar__viewContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.react-calendar__viewContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+}
+
+.react-calendar__viewContainer::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hover effect specifically for today's date */
+.react-calendar__tile--now:hover {
+  background-color: #ffb86c !important;
+  color: black;
+}
+
+/* Hover effect on any date */
+.react-calendar__tile:hover {
+  background-color: #ffb86c !important; /* your hover color */
+  color: black;
+  transform: scale(1.05);
+}
+
+.react-calendar__year-view__months__month:hover,
+.react-calendar__decade-view__years__year:hover,
+.react-calendar__century-view__decades__decade:hover {
+  background-color: #ffb86c; /* hover color for month/year tiles */
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Hover effect for navigation buttons */
+.react-calendar__navigation button:hover {
+  background-color: #ffb86c !important;
+  color: black;
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 768px) {
+  .calendar-box {
+    width: 90%;
+    padding: 10px;
+    margin-top: 20px; /* ✅ ensures visible top space */
+  }
+
+  .react-calendar {
+    width: 100% !important;
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+}

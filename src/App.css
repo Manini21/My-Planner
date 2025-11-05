@@ -1,0 +1,411 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto; /* ✅ allows vertical scroll */
+}
+
+body {
+  overflow-y: auto !important;
+}
+
+.planner-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: stretch;
+  justify-items: center;
+  gap: 1.5rem;
+  width: 70%;
+  max-width: 900px;
+  min-height: 400px;
+
+  /* keep invisible but preserve structure */
+  background: transparent; 
+  border: none;
+  box-shadow: none;
+  padding: 1rem;
+
+  /* 🔒 keep it centered */
+  position: relative;
+   overflow-x: hidden;
+  overflow-y: auto; /* ✅ allows vertical scroll */
+}
+
+
+
+/* Sections */
+.left-section,
+.center-section,
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Reusable box style */
+.box {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+/* Fonts + glow aesthetic */
+h2 {
+  font-family: "Merriweather", serif;
+  color: #ffb86c;
+  text-shadow: 0 0 8px rgba(255, 184, 108, 0.8);
+}
+
+.sticky-notes {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* fills the full height of its grid section */
+}
+
+.sticky-notes h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+/* Sticky Notes Styling */
+.sticky-notes textarea {
+  flex-grow: 1;
+  width: 100%;
+  height: 300%;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2e2e2e;
+  background-color: rgba(244, 243, 205, 0.9);
+  background-blend-mode: multiply;
+
+  /* 👇 journal-style lines */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 22px,
+    rgba(0, 0, 0, 0.1) 23px
+  );
+
+  border-radius: 12px;
+  font-family: "Caveat", "Poppins", sans-serif;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.sticky-notes button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffb86c;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sticky-notes button:hover {
+  background-color: #ff9b3f;
+}
+
+.notes-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.note {
+  background: #fff5c2;
+  color: #3a2c00;
+  padding: 0.8rem;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  font-family: "Comic Neue", cursive;
+}
+
+.note button {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  color: #8b4513;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+
+.sticker-pack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+.sticker-preview {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.sticker-pack h2{
+  background-color: rgb(124, 68, 106);
+  border-radius: 8px;
+  width: 100%;
+}
+.sticker-img {
+  width: 60px;
+  height: 60px;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.sticker-img:hover {
+  transform: scale(1.2);
+}
+
+.see-more-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Popup styles */
+.sticker-popup {
+  position: absolute;
+  bottom: 50px; /* pops just above the sticker pack box */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(234, 74, 231, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: rgb(56, 23, 52) !important;
+}
+.popup-content h3{
+  margin-top: 1rem;
+}
+
+.popup-sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin: 0.4rem 0;
+}
+
+.popup-sticker {
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+
+.popup-sticker:hover {
+  transform: scale(1.15);
+}
+
+.close-popup-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.close-popup-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+
+.mascot {
+  text-align: center;
+  background: transparent; /* ✅ makes div invisible */
+  border: none;            /* ✅ removes any border */
+  box-shadow: none;        /* ✅ removes shadow if any */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.mascot-img {
+  width: 160px;
+  height: 180px;
+  margin: 0.5rem auto;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  transition: transform 0.3s;
+  backdrop-filter: blur(0px);
+}
+
+.mascot-img:hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ffb86c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.logout-btn:hover {
+  background-color: #ff9a3c;
+}
+
+
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 1024px) {
+  .planner-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .left-section, .center-section, .right-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .planner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+  .sticky-notes, .todo-list, .sticker-pack {
+    width: 95%;
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+
+  .sticky-notes textarea {
+    width: 100%;
+    height: 200px;
+    font-size: 0.9rem;
+  }
+
+  .logout-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    z-index: 1000;
+  }
+
+  .mascot {
+    width: 120px;
+    height: auto;
+  }
+
+  .left-section, .right-section {
+    order: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 10px;
+  }
+
+  .landing-title {
+    font-size: 1.8rem;
+  }
+
+  .signup-card {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .sticky-notes textarea {
+    height: 150px;
+  }
+
+  .mascot {
+    width: 100px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

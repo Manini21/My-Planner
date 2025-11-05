@@ -1,0 +1,84 @@
+.sticky-notes {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* fills the full height of its grid section */
+}
+
+
+.sticky-note-area {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  height: 80%;
+}
+
+.sticky-notes h2 {
+  text-align: center;
+  color: #ffb86c;
+  background-color: rgb(124, 68, 106);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-family: "Merriweather", serif;
+  font-weight: 600;
+}
+
+
+.dropped-sticker {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Sticky Notes Styling */
+.sticky-notes textarea {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2e2e2e;
+  background-color: rgba(244, 243, 205, 0.9);
+  background-blend-mode: multiply;
+
+  /* 👇 journal-style lines */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 22px,
+    rgba(0, 0, 0, 0.1) 23px
+  );
+
+  border-radius: 12px;
+  font-family: "Caveat", "Poppins", sans-serif;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.sticky-notes button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffb86c;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sticky-notes button:hover {
+  background-color: #ff9b3f;
+}
+
+/* Rnd wrappers should not be pointer-events: none; allow interactions */
+.rnd-sticker-wrapper {
+  position: absolute;
+  touch-action: none;
+}
+
+/* dropped image minor hover effect */
+.dropped-sticker:hover {
+  transform: scale(1.02);
+  transition: transform 0.12s ease;
+}
