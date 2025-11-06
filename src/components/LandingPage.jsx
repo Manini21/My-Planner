@@ -6,16 +6,24 @@ const LandingPage = ({ onSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  console.log("🟢 LandingPage loaded, onSignup:", onSignup);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("✅ Form submitted");
 
     // 💾 Save user details in localStorage
     const userData = { username, email, password };
     localStorage.setItem("userData", JSON.stringify(userData));
     localStorage.setItem("isLoggedIn", JSON.stringify(true));
 
-    // ✅ Move to the planner page
-    onSignup();
+     // ✅ Call the prop from App.jsx
+    if (onSignup && typeof onSignup === "function") {
+      console.log("✅ onSignup called successfully");
+      onSignup();
+    } else {
+      console.error("❌ onSignup function not passed to LandingPage");
+    }
   };
 
   return (

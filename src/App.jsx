@@ -87,10 +87,13 @@ function App() {
   };
 
   // 🚪 Show landing page if not logged in
-  if (!isLoggedIn) {
-    return <LandingPage onSignup={() => setIsLoggedIn(true)} />;
+ if (!isLoggedIn) {
+    console.log("🟡 Rendering LandingPage, passing onSignup prop");
+    return <LandingPage onSignup={() => {
+      console.log("🟢 onSignup triggered in App");
+      setIsLoggedIn(true);
+    }} />;
   }
-
   return (
     <div className="app" style={{ backgroundImage: `url(${bgImage})` }}>
       {/* 🚪 Logout button */}
