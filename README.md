@@ -28,9 +28,3 @@ Plan your day with a calendar, to-do list, sticky notes, and adorable stickers �
 
 ---
 
-## 🚀 Getting Started
-
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/YourUsername/My-Planner.git
-cd My-Planner
